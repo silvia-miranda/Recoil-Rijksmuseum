@@ -1,0 +1,41 @@
+{
+  "name": "Recoil-Test-App",
+  "version": "0.0.1",
+  "description": "Built to test Total Recoil JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack-dev-server --open"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
+  },
+  "author": "Total Recoil JS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.1",
+    "recoil": "0.0.10",
+    "webpack": "^4.29.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "nodemon": "^1.18.9",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
