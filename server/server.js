@@ -6,9 +6,9 @@ const path = require ('path');
 app.use(express.json());
 
 //will need one here for the webpack build file?
-//app.use()
+app.use('/build', express.static(__dirname + '/build'));
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'))
 });
 

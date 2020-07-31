@@ -7,7 +7,7 @@ import {
 
 
 
-function X () {
+const Profile = () => {
 
 
   return (
@@ -15,3 +15,5 @@ function X () {
     </>
   )
 }
+
+export default Profile;

@@ -1,26 +1,28 @@
 import React from 'react';
-import {
-  RecoilRoot,
-  atom,
-  selector
-} from 'recoil';
-import Register from './Register.jsx';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from './Login.jsx';
 import Profile from './Profile.jsx';
 import Search from './Search.jsx';
+import Navbar from './Navbar.jsx';
 
 
 
-function App () {
+const App = () => {
 
-
+console.log('this is the app')
   return (
-    <RecoilRoot>
-      <Register />
-      {/* <Login />
-      <Profile /> */}
-      {/* Whatever other shit we need right here!  */}
-    </RecoilRoot>
+    <div className="root">
+      <Navbar />
+      <h1>Welcome to hell</h1> 
+
+      {/* <Router> 
+        <Switch>
+          <Route component={Search} exact path="/" />
+          <Route component={Profile} path="/profile" />
+          <Route component={Login} path="/login" /> 
+        </Switch>
+      </Router> */}
+    </div>
   )
 }
 
