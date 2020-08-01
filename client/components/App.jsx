@@ -14,12 +14,11 @@ console.log('this is the app')
     <div className="root">
       <Navbar />
       <h1>Rijksmuseum search</h1> 
-
       <Router> 
         <Switch>
-          <Route component={Search} path="/" />
-          <Route component={Profile} path="/profile" />
-          <Route component={Login} path="/login" /> 
+          <Route exact path="/" component={Login}  />
+          <Route exact path="/profile" component={Profile}  />
+          <Route exact path="/search" component={Search}  /> 
         </Switch>
       </Router>
     </div>

@@ -1,7 +1,9 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import {
   atom,
-  useRecoilState
+  selector,
+  useRecoilState,
+  useRecoilValue,
 } from 'recoil';
 import { searchValue as searchValueAtom, results as resultsAtom, myQuery } from "../atoms.js";
 
@@ -21,17 +23,21 @@ const [result, setResult] = useRecoilState(resultsAtom);
     e.preventDefault();
     console.log(searchVal);
     // fetch ('https://ghapi.huchen.dev/repositories')
-    let url = `https://www.rijksmuseum.nl/api/nl/collection?key=JAzK4fC0&q=${searchVal}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`
+    let url = `https://www.rijksmuseum.nl/api/en/collection?key=JAzK4fC0&q=${searchVal}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`
     fetch(url)
     .then(response => response.json())
     .then(response => {
       console.log(url)
-      setResult(Object.assign({}, response))
-      console.log(result)
+      setResult(result.push(response.artObjects))
+      console.log("result: ", result)
+      console.log("response: ", response)
+      // result.forEach(element => {
+
+      // })
     })
   }
  
-  
+  //0: {links: {…}, id: "nl-SK-A-4691", objectNumber: "SK-A-4691", title: "Zelfportret", hasImage: true, …}
 
   return (
     <div id="search">

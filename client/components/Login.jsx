@@ -1,45 +1,59 @@
 import React, { Component, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   atom,
   selector,
   useRecoilState,
 } from 'recoil';
-import {username} from '../atoms.js';
+import {username, loginStatus } from '../atoms.js';
 
 
 const Login = () => {
-  const greeting = "This is where the fun begins!"
+  const greeting = "Please enter your username below:"
   const [user, setUser] = useRecoilState(username);
-  // const [password, setPassword] = useState('');
-  // const [isLoggedIn, setIsLoggedIn] = useState(Boolean);
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginStatus);
 
   const handleUsernameChange = (e) => {
     console.log(e.target.value)
     setUser(e.target.value)
+  }   
+  const handlePasswordChange = (e) => {
+     setPassword(e.target.value)
   }
-   
-  // const handlePasswordChange = (e) => {
-  //    setPassword(e.target.value)
-  // }
-  // const handleLoginStatus = (e) => {
-  //    setIsLoggedIn(e.target.value)
-  // }
 
   const handleSubmit = (e) => {
   // Code to handle submit.
-    e.preventDefault();
-    setUser(username)
-  };
+  event.preventDefault();
+      fetch('http://localhost:8080/login', {
+        method: 'POST',  
+        body: JSON.stringify({
+          username: user,
+          password: password,
+        })
+      })
+          .then(response => {
+          console.log("login response: ", response)
+          setUser(user)
+          setPassword(password)
+          if(response.status === 200) {
+            setIsLoggedIn(true)
+            return history.push("/search");
+          }
+          }) 
+          .catch(error => console.log(error));
+  }
+  
 
   return (
     <div>
-    <h1>{greeting}</h1>
+    <h3>{greeting}</h3>
     <form className='register' onSubmit={handleSubmit}>
       <input type='text' className='username' onChange={handleUsernameChange} />
-     
+      <input type='text' className='username' onChange={handleUsernameChange} />
       <button type='submit'>Register Here</button>
     </form>
-    <p>{username}</p>
+    <p>{user}</p>
     {/* <p>{password}</p> */}
     </div>
   )
