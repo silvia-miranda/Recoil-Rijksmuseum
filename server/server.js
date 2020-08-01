@@ -20,7 +20,7 @@ app.use(express.json());
 //will need one here for the webpack build file?
 app.use('/build', express.static(__dirname + '/build'));
 
-app.post('/login', userController.verifyUser, (req, res) => {
+app.post('/api/login', userController.verifyUser, (req, res) => {
   // what should happen here on successful log in?
   res.status(200)
             .json({ "user": res.locals.user  })

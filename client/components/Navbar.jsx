@@ -21,16 +21,16 @@ const Navbar = (props) => {
   <Router>
     <header className='navbar'>
       <div id='link-container'>
-        <Link to="/search">Search</Link>
-        <Link to="/profile"><div className='navbaritem'>Profile</div></Link>
+        <Link to="/search" className='navbaritem'>Search</Link>
+        {/* <Link to="/profile"><div className='navbaritem'>Profile</div></Link> */}
         <Link to="/login"><div className='navbaritem'>Login</div></Link>
         <Link to="/profile"><div className='navbaritem'>Hi, {userAtom}</div></Link>
       </div>
-      {/* <Switch>
+      <Switch>
         <Route component= {Search} path="/search" />
         <Route component={Profile} path="/profile" />
         <Route component={Login} path="/login" /> 
-      </Switch> */}
+      </Switch>
     </header>
   </Router>
 )};

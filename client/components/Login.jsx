@@ -25,7 +25,7 @@ const Login = () => {
   const handleSubmit = (e) => {
   // Code to handle submit.
   event.preventDefault();
-      fetch('http://localhost:8080/login', {
+      fetch('http://localhost:8080/api/login', {
         method: 'POST',  
         body: JSON.stringify({
           username: user,
@@ -50,7 +50,7 @@ const Login = () => {
     <h3>{greeting}</h3>
     <form className='register' onSubmit={handleSubmit}>
       <input type='text' className='username' onChange={handleUsernameChange} />
-      <input type='text' className='username' onChange={handleUsernameChange} />
+      <input type='password' className='username' onChange={handlePasswordChange} />
       <button type='submit'>Register Here</button>
     </form>
     <p>{user}</p>

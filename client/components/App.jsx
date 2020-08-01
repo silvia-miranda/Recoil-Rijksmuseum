@@ -12,15 +12,17 @@ const App = () => {
 console.log('this is the app')
   return (
     <div className="root">
-      <Navbar />
-      <h1>Rijksmuseum search</h1> 
-      <Router> 
-        <Switch>
+      {/* <Router>  */}
+        <Navbar />
+        <h1>Rijksmuseum</h1> 
+      
+        {/* <Switch>
+          <Route path="/search" component={Search}  /> 
           <Route exact path="/" component={Login}  />
-          <Route exact path="/profile" component={Profile}  />
-          <Route exact path="/search" component={Search}  /> 
+          <Route path="/profile" component={Profile}  />
+        
         </Switch>
-      </Router>
+      </Router> */}
     </div>
   )
 }
