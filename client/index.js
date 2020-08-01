@@ -10,4 +10,5 @@ ReactDOM.render (
   document.getElementById('root')
 );
 
-
+//Rijksmuseum API
+//API key JAzK4fC0

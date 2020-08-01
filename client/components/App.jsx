@@ -13,15 +13,15 @@ console.log('this is the app')
   return (
     <div className="root">
       <Navbar />
-      <h1>Welcome to hell</h1> 
+      <h1>Rijksmuseum search</h1> 
 
-      {/* <Router> 
+      <Router> 
         <Switch>
-          <Route component={Search} exact path="/" />
+          <Route component={Search} path="/" />
           <Route component={Profile} path="/profile" />
           <Route component={Login} path="/login" /> 
         </Switch>
-      </Router> */}
+      </Router>
     </div>
   )
 }

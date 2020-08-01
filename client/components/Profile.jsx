@@ -8,10 +8,13 @@ import {
 
 
 const Profile = () => {
-
+  let username = useRecoilValue(username)
+  let searchHistory = useRecoilValue(searchHistory)
 
   return (
     <>
+    {username}
+    {searchHistory}
     </>
   )
 }

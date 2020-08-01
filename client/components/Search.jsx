@@ -1,11 +1,9 @@
 import React, { useState }from 'react';
 import {
-  RecoilRoot,
   atom,
-  selector, useRecoilState
+  useRecoilState
 } from 'recoil';
-import { user, loginStatus, loginStatusSelector, searchValue as searchValueAtom, results as resultsAtom } from "../atoms.js";
-import regeneratorRuntime from "regenerator-runtime";
+import { searchValue as searchValueAtom, results as resultsAtom, myQuery } from "../atoms.js";
 
 const Search = () => {
 
@@ -17,28 +15,28 @@ const [result, setResult] = useRecoilState(resultsAtom);
     setSearchVal(e.target.value)
   }
 
-  const search = (e) => {
+
+ 
+  const getSearchResults = (e) => {
     e.preventDefault();
     console.log(searchVal);
-    fetch ('https://ghapi.huchen.dev/repositories')
+    // fetch ('https://ghapi.huchen.dev/repositories')
+    let url = `https://www.rijksmuseum.nl/api/nl/collection?key=JAzK4fC0&q=${searchVal}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`
+    fetch(url)
     .then(response => response.json())
     .then(response => {
-      console.log(response)
-      setResult(
-        Object.assign({}, result, {
-           response,
-        })
-      )
+      console.log(url)
+      setResult(Object.assign({}, response))
+      console.log(result)
     })
   }
  
-   
   
 
   return (
     <div id="search">
-      <h1>Search for some shit below... you won't get it. This only returns some github bullshit.</h1> 
-      <form className='searchForm' onSubmit={search}>
+      <h1>Search for some art below... it's not on the page, but it might be in your console!</h1> 
+      <form className='searchForm' onSubmit={getSearchResults}>
       <input type='text' className='username' onChange={handleChange} />
       <button type='submit'>Search</button>
       </form>

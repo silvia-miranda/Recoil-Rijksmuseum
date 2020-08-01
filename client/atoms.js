@@ -1,7 +1,8 @@
 import { atom, selector } from 'recoil';
+import regeneratorRuntime from "regenerator-runtime";
 
-export const user = atom({
-  key: 'user',
+export const username = atom({
+  key: 'username',
   default: '',
 });
 
@@ -20,7 +21,20 @@ export const searchValue = atom({
   default: '',
 });
 
+export const searchHistory = atom({
+  key: 'searchHistory',
+  default: [],
+});
+
 export const results = atom({
   key: 'results',
   default: [],
+});
+
+export const myQuery = selector({
+  key: 'MyDBQuery',
+  get: async ({ get }) => {
+    return await getSearchResults();
+    
+    }
 });
