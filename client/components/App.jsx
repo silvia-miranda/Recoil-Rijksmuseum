@@ -14,7 +14,7 @@ console.log('this is the app')
     <div className="root">
       {/* <Router>  */}
         <Navbar />
-        <h1>Rijksmuseum</h1> 
+      
       
         {/* <Switch>
           <Route path="/search" component={Search}  /> 

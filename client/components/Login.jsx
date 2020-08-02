@@ -4,22 +4,27 @@ import {
   atom,
   selector,
   useRecoilState,
+  useSetRecoilState,
+  useRecoilValue
 } from 'recoil';
 import {username, loginStatus } from '../atoms.js';
 
 
 const Login = () => {
   const greeting = "Please enter your username below:"
-  const [user, setUser] = useRecoilState(username);
+  const setUser = useSetRecoilState(username);
+  const user = useRecoilState(username)
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginStatus);
+  const setLoginStatus = useSetRecoilState(loginStatus);
 
   const handleUsernameChange = (e) => {
-    console.log(e.target.value)
+    
     setUser(e.target.value)
+    console.log('recoil user: ', user)
   }   
   const handlePasswordChange = (e) => {
      setPassword(e.target.value)
+     console.log('recoil pw: ', password)
   }
 
   const handleSubmit = (e) => {
@@ -37,7 +42,7 @@ const Login = () => {
           setUser(user)
           setPassword(password)
           if(response.status === 200) {
-            setIsLoggedIn(true)
+            setLoginStatus(true)
             return history.push("/search");
           }
           }) 

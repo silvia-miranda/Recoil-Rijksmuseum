@@ -25,7 +25,8 @@ const Navbar = (props) => {
         {/* <Link to="/profile"><div className='navbaritem'>Profile</div></Link> */}
         <Link to="/login"><div className='navbaritem'>Login</div></Link>
         <Link to="/profile"><div className='navbaritem'>Hi, {userAtom}</div></Link>
-      </div>
+      </div>  
+      <h1>Rijksmuseum</h1> 
       <Switch>
         <Route component= {Search} path="/search" />
         <Route component={Profile} path="/profile" />
