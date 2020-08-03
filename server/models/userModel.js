@@ -13,6 +13,7 @@ const userSchema = new Schema({
 
 // creates a model for the 'species' collection that will be part of the export
 
-
+// TESTING
+//const userModel = mongoose.model('User', userSchema)
 // exports all the models in an object to be used in the controller
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)

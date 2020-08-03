@@ -2,8 +2,10 @@ const express = require ('express');
 const app = express();
 const path = require ('path');
 const mongoose = require('mongoose')
-const userController = require('../controllers/userController');
+const userController = require('./controllers/userController');
 const MONGO_URI = "mongodb+srv://mirasil:kimono80@cluster0.ilejg.mongodb.net/astro?retryWrites=true&w=majority";
+
+
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
   useNewUrlParser: true,
@@ -20,10 +22,11 @@ app.use(express.json());
 //will need one here for the webpack build file?
 app.use('/build', express.static(__dirname + '/build'));
 
-app.post('/login', userController.verifyUser, (req, res) => {
+app.post('/api/login', userController.verifyUser, (req, res) => {
   // what should happen here on successful log in?
   res.status(200)
             .json({ "user": res.locals.user  })
+  res.redirect('/search')
 
 });
 

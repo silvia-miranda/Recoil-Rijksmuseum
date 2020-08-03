@@ -17,6 +17,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const setLoginStatus = useSetRecoilState(loginStatus);
 
+  let history = useHistory();
+
   const handleUsernameChange = (e) => {
     setUser(e.target.value)
     console.log('recoil user: ', user)
@@ -30,9 +32,9 @@ const Login = () => {
   const handleSubmit = (e) => {
   // Code to handle submit.
   event.preventDefault();
-      fetch('http://localhost:8080/login', {
+      fetch('/api/login', {
         method: 'POST',  
-        headers: { 'Content-Type': 'application/json' },
+        //headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: user,
           password: password,
@@ -42,9 +44,12 @@ const Login = () => {
           console.log("login response: ", response)
           setUser(user)
           setPassword(password)
+          console.log(response.status)
+
           if(response.status === 200) {
-            setLoginStatus(true)
-            return history.push("/search");
+            console.log(response.status)
+            // setLoginStatus(true)
+            return history.push('/search')
           }
           }) 
           .catch(error => console.log(error));

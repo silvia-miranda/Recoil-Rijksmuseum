@@ -1,5 +1,5 @@
-const User = require('./userModel');
-const { db } = require('./userModel');
+const User = require('../models/userModel.js');
+const { db } = require('../models/userModel.js');
 // const db = require('mongoose');
 
 const userController = {};
@@ -47,20 +47,10 @@ userController.createUser = (req, res, next) => {
 };
 
 
-/**
-* verifyUser - Obtain username and password from the request body, locate
-* the appropriate user in the database, and then authenticate the submitted password
-* against the password stored in the database.
-*/
+
 userController.verifyUser = (req, res, next) => {
   // write code here
-// const userInput = req.body;
-// console.log("input: ", userInput);
-// console.log("user: ", User.findOne({userInput}))
-// let name = User.find({},{username: 'silvia'});
-// console.log("name: ", name);
-// let names = User.find({});
-//console.log(User.find())
+
 console.log(req.body)
   User.findOne(req.body, (err, results) => {
     if (err) {
@@ -74,9 +64,7 @@ console.log(req.body)
       next();
     } 
   })
-  //if user exists, send to secret page
 
-// console.log("names: ", names.users);
 }
 
 module.exports = userController;
