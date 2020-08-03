@@ -4,13 +4,14 @@ import { results} from '../atoms.js'
 
 
 
-function ArtItem() {
-  const queryResults = useRecoilValue(results);
+function ArtItem(props) {
+  //const queryResults = useRecoilValue(results);
   
 
   return (
-    <div>
-   {ArtItem}
+    <div id='artItem'>
+      <span>{props.item.longTitle}</span>
+      <img src={props.src} />
     </div>
    
   );

@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = (e) => {
   // Code to handle submit.
   event.preventDefault();
-      fetch('http://localhost:8080/api/login', {
+      fetch('http://localhost:8080/login', {
         method: 'POST',  
         body: JSON.stringify({
           username: user,

@@ -1,24 +1,27 @@
 import {selector, atom, useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import React from 'react';
-import { searchValue, results, currentSearchValQuery, searchHistory, getSearchResults } from "../atoms.js";
-import ResultsSection from './ResultsSection.jsx';
+import { searchValue, results, currentSearchValQuery, searchHistory, SearchValQuery } from "../atoms.js";
+
 import ArtItem from './ArtItem.jsx';
 
 
 function SearchResults() {
-  const queryResults = useRecoilValue(getSearchResults);
-  const { data } = queryResults;
-  const currentSearch = useRecoilValue(currentSearchValQuery);
+  const items = useRecoilValue(SearchValQuery)
+  //console.log('items: ', items)
+  const { artObjects } = items;
+  console.log("artObjects: ", artObjects)
+  //const currentSearch = useRecoilValue(currentSearchValQuery);
   //const friends = useRecoilValue(friendsInfoQuery);
-  const searchVal = useSetRecoilState(searchValue);
-
+  //const searchVal = useRecoilState(searchValue);
+  const arr = [];
+  artObjects.map(result => 
+    arr.push(<ArtItem key={result.id} item={result} src={result.links.self} />)
+  )
   return (
-    <div>
-   {data.map(result => (
-     <ArtItem key={result.id} item={result} src={result.src} />
-   ))}
+    <div id='searchResults'>
+   { arr }
     </div>
-   
+
   );
 }
 

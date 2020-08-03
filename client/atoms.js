@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 import regeneratorRuntime from "regenerator-runtime";
 
 export const username = atom({
@@ -16,10 +16,7 @@ export const loginStatusSelector = selector({
   get: ({get}) => get(loginStatus),
 })
 
-export const searchValue = atom({
-  key: 'searchValue',
-  default: '',
-});
+
 
 export const searchHistory = atom({
   key: 'searchHistory',
@@ -31,31 +28,31 @@ export const results = atom({
   default: [],
 });
 
-// export const myQuery = selector({
-//   key: 'MyDBQuery',
-//   get: async ({ get }) => {
-//     return await getSearchResults();
-    
-//     }
-// });
+
+export const searchValue = atom({
+  key: 'searchValue',
+  default: '',
+});
 
 export const currentSearchValQuery = selector({
   key: 'CurrentUserInfoQuery',
-  get: ({get}) => get(getSearchResults(get(searchValue))),
+  get: ({get}) => get(SearchValQuery(get(searchValue))),
 });
 
 //  `https://www.rijksmuseum.nl/api/en/collection?key=JAzK4fC0&q=${searchVal}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`
 
-export const getSearchResults = selector({
+export const SearchValQuery = selector({
   key: 'searchResultSelector',
   get: async ({ get }) => {
-        try{
-            const response = await fetch(`https://www.rijksmuseum.nl/api/en/collection?key=JAzK4fC0&q=${searchValue}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`);
-            const data = await response.json();
-            return data.artObjects;
-        }catch(error){
-            throw error;
-        }
+      const searchVal = get(searchValue)
+      return await fetch (`https://www.rijksmuseum.nl/api/en/collection?key=JAzK4fC0&q=${searchVal}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`)
+        .then(response => response.json())
+        .then(response => {
+      //const [result, setResult] = useRecoilState(results); 
+      // setResult(result.push(response));
+      console.log("response is: ", response)
+      return response;
+    })
     }
 });
   
@@ -74,3 +71,11 @@ export const getSearchResults = selector({
   //   }
   //   return data.artObjects;
   // }
+
+//   try{
+//     const response = await fetch(`https://www.rijksmuseum.nl/api/en/collection?key=JAzK4fC0&q=${searchValue}&p=1&ps=12&ondisplay=True&st=Objects&ii=0`);
+//     const data = await response.json();
+//     return data;
+// }catch(error){
+//     throw error;
+// }

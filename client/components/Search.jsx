@@ -6,33 +6,39 @@ import {
   useSetRecoilState,
   useRecoilValue,
 } from 'recoil';
-import { searchValue, results, currentSearchValQuery, searchHistory, getSearchResults } from "../atoms.js";
+import { searchValue, results, currentSearchValQuery, searchHistory, SearchValQuery } from "../atoms.js";
 
 import SearchResults from './SearchResults.jsx'
 
 
 const Search = () => {
 
-const [searchVal, setSearchVal] = useRecoilState(searchValue);  
-// const searchVal = useRecoilValue(searchValue); 
-const [result, setResult] = useRecoilState(results); 
-//const result = useRecoilValue(results);
-const setSearchHistory = useSetRecoilState(searchHistory); 
-const history = useRecoilValue(searchHistory); 
+  const [searchVal, setSearchVal] = useRecoilState(searchValue)
+  //const setSearchVal = useRecoilState(searchValue);  
+  //const queryResults = useRecoilValue(SearchValQuery);
+  //const { artObjects } = queryResults;
+  //const [result, setResult] = useRecoilState(results); 
+  //setResult(result.push(artObjects));
+  const setSearchHistory = useSetRecoilState(searchHistory); 
+  const history = useRecoilValue(searchHistory); 
 
   const handleChange = (e) => {
+    e.preventDefault();
     console.log(e.target.value)
     setSearchVal(e.target.value)
     console.log("searchVal: ", searchVal)
   }
 
-    const updateSearchVal = (e) => {
+  const updateSearchVal = (e) => {
     e.preventDefault();
-    setSearchVal(e.target.value)
-    setSearchHistory(history.push(searchVal))
+    //setSearchVal(e.target.value)
+    //setSearchHistory(history.push(searchVal))
     // console.log("searchVal: ", searchVal)
   }
 
+  
+  
+   
 //   const currentSearchValQuery = selector({
 //     key: 'CurrentUserInfoQuery',
 //     get: ({get}) => get(getSearchResults(get(searchVal))),
@@ -71,13 +77,14 @@ const history = useRecoilValue(searchHistory);
 
   return (
     <div id="search">
-      <h1>Search for some art below... it's not on the page, but it might be in your console!</h1> 
-      <form className='searchForm' onSubmit={updateSearchVal} >
-      <input type='text' className='username' onChange={handleChange} />
-      <button type='submit'>Search</button>
-      </form>
+      
+        <h1>Search for some art below... it's not on the page, but it might be in your console!</h1> 
+        <form className='searchForm' onSubmit={updateSearchVal} >
+          <input type='text' className='username' onChange={handleChange} />
+          <button type='submit'>Search</button>
+        </form>
       <React.Suspense fallback={<div>Loading...</div>}>
-      <SearchResults />
+        <SearchResults />
       </React.Suspense>
   </div>
   )
