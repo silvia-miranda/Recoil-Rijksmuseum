@@ -12,16 +12,16 @@ import {username, loginStatus } from '../atoms.js';
 
 const Login = () => {
   const greeting = "Please enter your username below:"
-  const setUser = useSetRecoilState(username);
-  const user = useRecoilState(username)
+  const [user, setUser] = useRecoilState(username);
+  
   const [password, setPassword] = useState('');
   const setLoginStatus = useSetRecoilState(loginStatus);
 
   const handleUsernameChange = (e) => {
-    
     setUser(e.target.value)
     console.log('recoil user: ', user)
   }   
+
   const handlePasswordChange = (e) => {
      setPassword(e.target.value)
      console.log('recoil pw: ', password)
@@ -32,6 +32,7 @@ const Login = () => {
   event.preventDefault();
       fetch('http://localhost:8080/login', {
         method: 'POST',  
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: user,
           password: password,

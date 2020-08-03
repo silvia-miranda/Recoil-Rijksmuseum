@@ -2,7 +2,7 @@ const express = require ('express');
 const app = express();
 const path = require ('path');
 const mongoose = require('mongoose')
-const userController = require('../userController');
+const userController = require('../controllers/userController');
 const MONGO_URI = "mongodb+srv://mirasil:kimono80@cluster0.ilejg.mongodb.net/astro?retryWrites=true&w=majority";
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
@@ -24,24 +24,9 @@ app.post('/login', userController.verifyUser, (req, res) => {
   // what should happen here on successful log in?
   res.status(200)
             .json({ "user": res.locals.user  })
-  //how to send that.
-  //find out whether you want to send or use another method to return the data
-  //send back response that this was ok. to client
-  //in react conditional where if its good you render something
-  //res.locals - will need info re user
-  //res.redirect('../astro');
+
 });
 
-
-
-//all other routes should go here
-app.get('/login', (req, res) => {
-  //res.redirect('../astro');
-});
-
-app.get('/search', (req, res) => {
-  //res.redirect('../astro');
-});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'))

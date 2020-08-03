@@ -10,8 +10,9 @@ function ArtItem(props) {
 
   return (
     <div id='artItem'>
-      <span>{props.item.longTitle}</span>
-      <img src={props.src} />
+      
+      <img height="300" src={props.src} />
+      <p>{props.item.longTitle}</p>
     </div>
    
   );

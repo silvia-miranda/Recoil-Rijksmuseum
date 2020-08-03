@@ -1,21 +1,20 @@
 import React from 'react';
 import {
-  RecoilRoot,
-  atom,
-  selector
+  useRecoilValue
 } from 'recoil';
-
+import { username, resultLength, results, currentSearchValQuery, searchHistory, SearchValQuery } from "../atoms.js";
 
 
 const Profile = () => {
-  let username = useRecoilValue(username)
-  let searchHistory = useRecoilValue(searchHistory)
+  const user = useRecoilValue(username)
+  const history = useRecoilValue(searchHistory)
 
   return (
-    <>
-    {username}
-    {searchHistory}
-    </>
+    <div>
+    {user}
+    
+    { history }
+    </div>
   )
 }
 
