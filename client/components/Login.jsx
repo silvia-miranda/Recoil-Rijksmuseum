@@ -1,55 +1,71 @@
 import React, { Component, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   atom,
   selector,
   useRecoilState,
+  useSetRecoilState,
+  useRecoilValue
 } from 'recoil';
-
+import {username, loginStatus } from '../atoms.js';
 
 
 const Login = () => {
-  const greeting = "This is where the fun begins!"
-  const [username, setUsername] = useRecoilState(user);
+  const greeting = "Please enter your username below:"
+  const [user, setUser] = useRecoilState(username);
+  
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(Boolean);
+  const setLoginStatus = useSetRecoilState(loginStatus);
+
+  let history = useHistory();
 
   const handleUsernameChange = (e) => {
-    console.log(e.target.value)
-    setUsername(e.target.value)
-  }
-   
+    setUser(e.target.value)
+    console.log('recoil user: ', user)
+  }   
+
   const handlePasswordChange = (e) => {
      setPassword(e.target.value)
-  }
-  const handleLoginStatus = (e) => {
-     setIsLoggedIn(e.target.value)
+     console.log('recoil pw: ', password)
   }
 
   const handleSubmit = (e) => {
   // Code to handle submit.
-    e.preventDefault();
-    
-  };
+  event.preventDefault();
+      fetch('/api/login', {
+        method: 'POST',  
+        //headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: user,
+          password: password,
+        })
+      })
+          .then(response => {
+          console.log("login response: ", response)
+          setUser(user)
+          setPassword(password)
+          console.log(response.status)
 
-  fetch()
+          if(response.status === 200) {
+            console.log(response.status)
+            // setLoginStatus(true)
+            return history.push('/search')
+          }
+          }) 
+          .catch(error => console.log(error));
+  }
+  
 
   return (
     <div>
-    <h1>{greeting}</h1>
+    <h3>{greeting}</h3>
     <form className='register' onSubmit={handleSubmit}>
       <input type='text' className='username' onChange={handleUsernameChange} />
-      < br/>
-      < br/>
-      <input type='text' className='password' onChange={handleUsernameChange} />
-      < br/>
-      < br/>
-      <input type='text' className='username' onChange={handleUsernameChange} />
-      < br/>
-      < br/>
+      <input type='password' className='username' onChange={handlePasswordChange} />
       <button type='submit'>Register Here</button>
     </form>
-    <p>{username}</p>
-    <p>{password}</p>
+    <p>{user}</p>
+    {/* <p>{password}</p> */}
     </div>
   )
 }

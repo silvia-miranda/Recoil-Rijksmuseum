@@ -10,12 +10,11 @@ module.exports = {
   devServer: {
     publicPath: 'http://localhost:8080/build/',
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000/',
+      '/api': 'http://localhost:3000/',
       },
+      historyApiFallback: true,
+      hot: true,
     },
-    hot: true,
-  },
   module: {
     rules: [
       {

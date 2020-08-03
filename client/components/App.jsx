@@ -12,14 +12,15 @@ const App = () => {
 console.log('this is the app')
   return (
     <div className="root">
-      <Navbar />
-      <h1>Welcome to hell</h1> 
-
-      {/* <Router> 
-        <Switch>
-          <Route component={Search} exact path="/" />
-          <Route component={Profile} path="/profile" />
-          <Route component={Login} path="/login" /> 
+      {/* <Router>  */}
+        <Navbar />
+      
+      
+        {/* <Switch>
+          <Route path="/search" component={Search}  /> 
+          <Route exact path="/" component={Login}  />
+          <Route path="/profile" component={Profile}  />
+        
         </Switch>
       </Router> */}
     </div>
