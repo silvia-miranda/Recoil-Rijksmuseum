@@ -15,7 +15,7 @@ const Login = () => {
   const [user, setUser] = useRecoilState(username);
   
   const [password, setPassword] = useState('');
-  const setLoginStatus = useSetRecoilState(loginStatus);
+  const [loginStat, setLoginStat] = useRecoilState(loginStatus);
 
   let history = useHistory();
 
@@ -48,7 +48,7 @@ const Login = () => {
 
           if(response.status === 200) {
             console.log(response.status)
-            // setLoginStatus(true)
+            setLoginStat(true)
             return history.push('/search')
           }
           }) 
