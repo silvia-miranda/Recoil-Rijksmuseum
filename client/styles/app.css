@@ -1,15 +1,20 @@
-
-
 * {
   margin: 0px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .bodyClass {
   font-family: 'Roboto', sans-serif;
 }
 
+.page {
+  height: 90%;
+  text-align: center;
+}
+
 .navbar {
-  height: 100%;
+  margin-bottom: 50px;
+  height: 10%;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -18,7 +23,7 @@
 }
 
 .navbaritem {
-  width: 20%;
+  width: 25%;
   font-size: 18px;
   background-color: lightgrey;
   padding-left: 15px;
@@ -41,11 +46,12 @@
 #link-container {
   display: flex;
   width: 100%;
-  border-bottom: 1px black solid;
+  height: 80%;
+  /* border-bottom: 1px black solid; */
   background-color: lightgrey;
   text-align: center;
   font-size: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   justify-content: space-between;
 }
 
@@ -59,4 +65,60 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+/* Login */
+
+#greeting {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.username {
+  margin-right: 5px;
+}
+
+.password {
+  margin-right: 5px;
+}
+
+/* Art Wrapper */
+#art-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#artItem {
+  width: 30%;
+  margin: 12px;
+  display: flex;
+  -webkit-box-shadow: 9px 5px 24px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 9px 5px 24px 1px rgba(0,0,0,0.75);
+  box-shadow: 9px 5px 24px 1px rgba(88, 85, 85, 0.75);
+}
+
+#artItem > img {
+  max-width: 70%;
+}
+
+#artItem > p {
+  font-size: 14px;
+  padding-top: 12px;
+}
+
+/* Search Component */
+#searchResults {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#search {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+#searchText {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

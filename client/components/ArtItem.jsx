@@ -12,7 +12,7 @@ function ArtItem(props) {
   return (
     <div id='artItem' style={{backgroundColor:color,color:text}}>
       
-      <img height="300" src={props.src} />
+      <img src={props.src} />
       <p>{props.item.longTitle}</p>
       
       {/* <p>{props.item.principalOrFirstMaker}</p> */}

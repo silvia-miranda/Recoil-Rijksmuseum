@@ -40,9 +40,10 @@ const Search = () => {
 
   return (
     <div id="search">
-      
-        <h1>Search for an artist below!</h1> 
-        <h3>Here are some recent searches to get you started:</h3>
+      <div id='searchText'>
+        <h2>Search for an artist below!</h2> 
+        <h5>Here are some recent searches to get you started:</h5>
+        </div>
         <div>{history.map(searchItem => <span>{searchItem}    </span>)}</div>
         <form className='searchForm' value={val} onSubmit={handleSubmit} >
           <input type='text' className='searchBar' onChange={handleChange} />

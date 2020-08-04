@@ -84,4 +84,9 @@ export const textColor = atom({
   key: 'textColor',
   default: 'black'
 })
+
+export const darkMode = atom({
+  key: 'darkMode',
+  default: 'Dark Mode'
+})
  

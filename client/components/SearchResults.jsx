@@ -9,8 +9,8 @@ function SearchResults() {
   const items = useRecoilValue(SearchValQuery)
   const searchedTerm = useRecoilValue(searchValue)
   const numofresults = useRecoilValue(resultLength)
-  const [color, setColor] = useRecoilState(backgroundColor);
-  const [text ,setTextColor]=useRecoilState(textColor);
+  // const [color, setColor] = useRecoilState(backgroundColor);
+  // const [text ,setTextColor]=useRecoilState(textColor);
   console.log('num', numofresults)
 
   
@@ -20,13 +20,15 @@ function SearchResults() {
  
   const arr = [];
   artObjects.map(result => 
-    arr.push(<ArtItem key={result.id} style={{backgroundColor:color,color:text}} item={result} src={result.webImage.url} />)
+    arr.push(<ArtItem key={result.id} item={result} src={result.webImage.url} />)
   )
   return (
     <div id='searchResults'>
-      <h3>You searched for: {searchedTerm}</h3>
-      <h3>There are {numofresults} results.</h3>
-      { arr }
+      <h5>You searched for: {searchedTerm}</h5>
+      <h5>There are {numofresults} results.</h5>
+      <div id='art-wrapper'>
+        { arr }
+      </div>
     </div>
 
   );

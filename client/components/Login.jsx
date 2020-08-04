@@ -7,7 +7,7 @@ import {
   useSetRecoilState,
   useRecoilValue
 } from 'recoil';
-import {username, loginStatus, password } from '../atoms.js';
+import {username, loginStatus, password, backgroundColor, textColor } from '../atoms.js';
 
 
 const Login = () => {
@@ -16,6 +16,9 @@ const Login = () => {
   
   const [pw, setPassword] = useRecoilState(password);
   const [loginStat, setLoginStat] = useRecoilState(loginStatus);
+
+  const [color, setColor] = useRecoilState(backgroundColor);
+  const [text ,setTextColor]=useRecoilState(textColor);
 
   let history = useHistory();
 
@@ -54,10 +57,10 @@ const Login = () => {
 
   return (
     <div>
-    <h3>{greeting}</h3>
+    <h3 id='greeting'>{greeting}</h3>
     <form className='register' onSubmit={handleSubmit}>
-      <input type='text' className='username' onChange={handleUsernameChange} />
-      <input type='password' className='username' onChange={handlePasswordChange} />
+      <input type='text' className='username' placeholder='username' onChange={handleUsernameChange} />
+      <input type='password' placeholder='password' className='password' onChange={handlePasswordChange} />
       <button type='submit'>Log In</button>
     </form>
     <p>{user}</p>

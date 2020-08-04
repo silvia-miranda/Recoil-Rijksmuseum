@@ -10,6 +10,13 @@ import {
   useRecoilValue,
 } from 'recoil';
 
+// const Page = () => {
+//   return (
+//     <div className="page">
+//       <h1><img width='400px' src='https://cdn.worldvectorlogo.com/logos/rijksmuseum.svg'/></h1>
+//     </div>
+//   )
+// }
 
 const App = () => {
   const [color, setColor] = useRecoilState(backgroundColor);
@@ -20,6 +27,7 @@ console.log('this is the app')
     <div className="root">
       {/* <Router>  */}
         <Navbar />
+        {/* <Page /> */}
       
       
         {/* <Switch>
