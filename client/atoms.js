@@ -77,11 +77,11 @@ export const results = atom({
 
 export const backgroundColor = atom({
   key: 'backgroundColor',
-  default: 'red'
+  default: 'white'
 })
 
 export const textColor = atom({
   key: 'textColor',
-  default: 'white'
+  default: 'black'
 })
  

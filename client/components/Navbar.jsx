@@ -22,12 +22,15 @@ const Navbar = (props) => {
   return (
   <Router>
     <header className='navbar'>
-      <div id='link-container'>
-        <Link to="/search" className='navbaritem'>Search</Link>
-        <Link to="/login"><div className='navbaritem'>Login</div></Link>
-        <Link to="/profile"><div className='navbaritem'>Hi, {userAtom}</div></Link>
-        <button className='navbaritem' id='darkButton' style={{background:color,color:text}}onClick={()=>{setColor('black');setTextColor('red')}}>Dark Mode</button>
-
+      <div id='link-container' >
+        <div id='left-container'>
+          <Link to="/login"><div className='navbaritem'>Login</div></Link>
+          <Link to="/search" className='navbaritem'>Search</Link>
+        </div>
+        <div id='right-container'>
+          <Link to="/profile"><div className='navbaritem'>Hi, {userAtom}</div></Link>
+          <button className='navbaritem' id='darkButton' onClick={()=>{setColor('grey');setTextColor('white')}}>Dark Mode</button>
+        </div>
       </div>  
       <h1><img width='400px' src='https://cdn.worldvectorlogo.com/logos/rijksmuseum.svg'/></h1> 
       <Switch>
@@ -43,12 +46,3 @@ export default Navbar;
 
 
 
-function App() {
-  const [color,setColor]=useState('red');
-  const [textColor,setTextColor]=useState('white');
-  return (
-    <div className="App">
-      <button style={{background:color,color:textColor}} className='btn btn-primary' onClick={()=>{setColor("black");setTextColor('red')}}>Click here</button>
-    </div>
-  );
-}

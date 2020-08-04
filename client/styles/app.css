@@ -1,17 +1,28 @@
 
 
+* {
+  margin: 0px;
+}
+
+.bodyClass {
+  font-family: 'Roboto', sans-serif;
+}
 
 .navbar {
+  height: 100%;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   justify-content: space-between;
   font-size: 20px;
 }
 
 .navbaritem {
-  width: 100%;
+  width: 20%;
   font-size: 18px;
-  background-color: lightblue;
+  background-color: lightgrey;
+  padding-left: 15px;
+  padding-right: 15px;
   text-align: center;
 }
 
@@ -23,11 +34,29 @@
   color: black;
 }
 
+#darkButton {
+  width: 100%;
+}
+
 #link-container {
   display: flex;
   width: 100%;
   border-bottom: 1px black solid;
+  background-color: lightgrey;
   text-align: center;
   font-size: 12px;
-  justify-content: space-around;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+#left-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#right-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

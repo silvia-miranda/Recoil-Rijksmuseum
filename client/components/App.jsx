@@ -4,10 +4,16 @@ import Login from './Login.jsx';
 import Profile from './Profile.jsx';
 import Search from './Search.jsx';
 import Navbar from './Navbar.jsx';
-
+import { username, backgroundColor, textColor } from '../atoms.js';
+import {
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 
 const App = () => {
+  const [color, setColor] = useRecoilState(backgroundColor);
+  const [text ,setTextColor]=useRecoilState(textColor);
 
 console.log('this is the app')
   return (
