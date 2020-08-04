@@ -6,6 +6,11 @@ export const username = atom({
   default: '',
 });
 
+export const password = atom({
+  key: 'password',
+  default: '',
+});
+
 export const loginStatus = atom({
   key: 'loginStatus',
   default: false
@@ -53,10 +58,6 @@ export const SearchValQuery = selector({
       return response;
     })
     },
-    // set: ({set}, newVal) {
-    //   set(results, newVal);
-    // }
-    // }
 });
 
 export const resultLength = selector({
@@ -68,10 +69,19 @@ export const resultLength = selector({
   }
 })
 
-
 export const results = atom({
   key: 'results',
   default: currentSearchValQuery,
 });
-  
+
+
+export const backgroundColor = atom({
+  key: 'backgroundColor',
+  default: 'red'
+})
+
+export const textColor = atom({
+  key: 'textColor',
+  default: 'white'
+})
  

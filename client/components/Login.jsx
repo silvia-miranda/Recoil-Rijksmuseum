@@ -7,14 +7,14 @@ import {
   useSetRecoilState,
   useRecoilValue
 } from 'recoil';
-import {username, loginStatus } from '../atoms.js';
+import {username, loginStatus, password } from '../atoms.js';
 
 
 const Login = () => {
   const greeting = "Please enter your username below:"
   const [user, setUser] = useRecoilState(username);
   
-  const [password, setPassword] = useState('');
+  const [pw, setPassword] = useRecoilState(password);
   const [loginStat, setLoginStat] = useRecoilState(loginStatus);
 
   let history = useHistory();
@@ -37,18 +37,14 @@ const Login = () => {
         //headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: user,
-          password: password,
+          password: pw,
         })
       })
           .then(response => {
-          console.log("login response: ", response)
           setUser(user)
-          setPassword(password)
-          console.log(response.status)
-
-          if(response.status === 200) {
-            console.log(response.status)
-            setLoginStat(true)
+          setPassword(pw)
+          if(response.status === 200) { 
+            setLoginStat('true')
             return history.push('/search')
           }
           }) 
@@ -62,7 +58,7 @@ const Login = () => {
     <form className='register' onSubmit={handleSubmit}>
       <input type='text' className='username' onChange={handleUsernameChange} />
       <input type='password' className='username' onChange={handlePasswordChange} />
-      <button type='submit'>Register Here</button>
+      <button type='submit'>Log In</button>
     </form>
     <p>{user}</p>
     {/* <p>{password}</p> */}

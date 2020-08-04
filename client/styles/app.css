@@ -3,9 +3,8 @@
 
 .navbar {
   width: 100%;
-  /* border-bottom: 1px black solid; */
-  
   text-align: center;
+  justify-content: space-between;
   font-size: 20px;
 }
 
@@ -30,4 +29,5 @@
   border-bottom: 1px black solid;
   text-align: center;
   font-size: 12px;
+  justify-content: space-around;
 }
