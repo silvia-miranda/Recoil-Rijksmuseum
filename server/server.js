@@ -35,6 +35,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'))
 });
 
+app.get('/app.css', (req, res) => {
+  res.status(200)
+    .set('Content-Type', 'text/css; charset=UTF-8');
+  res.sendFile(path.join(__dirname, '../styles/app.css'));
+});
 //need a global error handler here
 
 app.listen(3000, () => console.log('Listening on port 3000'));

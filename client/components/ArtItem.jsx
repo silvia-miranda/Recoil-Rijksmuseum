@@ -13,6 +13,7 @@ function ArtItem(props) {
       
       <img height="300" src={props.src} />
       <p>{props.item.longTitle}</p>
+      {/* <p>{props.item.principalOrFirstMaker}</p> */}
     </div>
    
   );

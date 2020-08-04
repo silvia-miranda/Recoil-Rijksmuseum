@@ -1,0 +1,33 @@
+
+
+
+.navbar {
+  width: 100%;
+  /* border-bottom: 1px black solid; */
+  
+  text-align: center;
+  font-size: 20px;
+}
+
+.navbaritem {
+  width: 100%;
+  font-size: 18px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+.navbaritem:hover {
+  color: #f4f4f4;
+}
+
+.navbaritem:active {
+  color: black;
+}
+
+#link-container {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px black solid;
+  text-align: center;
+  font-size: 12px;
+}

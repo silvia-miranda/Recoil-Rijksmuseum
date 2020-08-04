@@ -26,7 +26,7 @@ const Navbar = (props) => {
         <Link to="/login"><div className='navbaritem'>Login</div></Link>
         <Link to="/profile"><div className='navbaritem'>Hi, {userAtom}</div></Link>
       </div>  
-      <h1>Rijksmuseum</h1> 
+      <h1><img width='400px' src='https://cdn.worldvectorlogo.com/logos/rijksmuseum.svg'/></h1> 
       <Switch>
         <Route component= {Search} path="/search" />
         <Route component={Profile} path="/profile" />
